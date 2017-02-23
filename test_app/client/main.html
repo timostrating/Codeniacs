@@ -1,0 +1,28 @@
+<head>
+  <title>test_app</title>
+</head>
+
+<body>
+  {{> todoList}}
+</body>
+
+<template name="todoList">
+	<h3>Todos</h3>
+	<button id="reverse-sort">reverse</button>
+	<ul>
+		{{#each todos}}
+			{{> todo}}
+		{{/each}}
+	</ul>
+
+<button class="add-todo" type="button" name="button">Add todo</button>
+</template>
+
+<template name="todo">
+  <li class="{{#if done}}done{{/if}}">
+		<input class="done" checked="{{#if done}}checked{{/if}}" type="checkbox"/>
+		{{label}}
+		<button class="delete">X</button>
+		{{createdAt}}
+	</li>
+</template>
