@@ -1,0 +1,22 @@
+{
+  "generator-angular-meteor": {
+    "filters": {
+      "js": true,
+      "html": true,
+      "scss": true,
+      "pagination": true,
+      "framework": "material",
+      "auth": true,
+      "oauth": true,
+      "googleAuth": true,
+      "facebookAuth": true,
+      "twitterAuth": true,
+      "appname": "meteorAngularApp",
+      "projectname": "meteorAngular",
+      "modules": "'angular-meteor',\n  'ui.router',\n  'ngMaterial',\n  'angularUtils.directives.dirPagination',\n  'accounts.ui'",
+      "usedBower": false,
+      "bower": false
+    },
+    "appname": "meteorAngular"
+  }
+}
