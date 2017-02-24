@@ -1,0 +1,113 @@
+\documentclass[]{report}
+\usepackage[parfill]{parskip}
+
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta}
+
+% Title Page
+\title{Definition of Done Codeniacs platform}
+\author{Timo Strating - medewerker bij UU-games}
+\date{Februari 24, 2017, Groningen}
+
+\renewcommand*\contentsname{Table of Content}
+\pagestyle{headings}
+
+\begin{document}
+\maketitle
+
+
+
+\begin{itemize}
+	\item Code
+	\begin{itemize}
+		\item De code die uiteindelijk opgeleverd zal gaan worden, zal minimale hoeveelheden commitariaat bevatten. Alles wat afwijkt van standaard structuren binnen de programmering zullen wel volledig gecommentarieerd zijn. Dit wordt gedaan omdat het ontwikkel team vanuit de volgende filosofie werkt: "als je code schoner is dan je commissariaat dan vertraagt extra veel commitarie\"{e}ren je alleen maar".
+		\item De directe feedback loop die de automatische tests het ontwikkel team geven zorgen er voor dat er altijd een duidelijk inzicht is in de kwaliteit van de code. Het is daarom van belang dat iedere ontwikkelaar die met de code aan de slag gaat dit goed bestudeerd en gebruikt.
+		\item De naam geving van de code zal volgens de typescript en de java standaarden zijn.
+		\item Waar mogelijk wordt er gekeken of er een getranspileerde taal gebruikt kan worden om de hoeveelheid code te minimaliseren. Hierbij moet je denken aan Typescript voor javascript, sass voor CSS en jade voor HTML. 
+		\item Voor de HTML geld dat het ontwikkel team de html5 standaarden dient te gebruiken.
+		\item Magic numbers dienen zoveel mogelijk weggewerkt te worden.
+		\item Alle code dient in het engels geschreven te worden.
+		\item Er dient gewerkt te worden volgens de volgende filosofie: "Laat je code altijd schoner achter dan je het hebt gevonden".
+		\item Er dient een readme file bijgehouden te worden.
+		\item De mappen structuur van metoer dient alleen uitgebreid te worden volgens de filosofie van meteor.
+		\item Server code dient in de "server" map geplaatst te worden. Dit zelfde geld voor de client alleen deze code gaat in de "client" map. Code die zowel op de server als de client gedraaid zal gaan worden dient in een gezamelijke map geplaatst te worden genaamd "lib".
+		\item Components dienen zo min mogelijk af te hangen van andere components.
+		\item Belangrijke error's die aangeven dat een onderdeel of module verkeerd gebruikt of opgezet is dienen dit altijd duidelijk te maken met een error die aangeeft dat het verkeerd gebruikt is en welk script deze error de lucht in gooit.
+		\item Constante of er op lijkende variabelen dienen volledig in hoofdletters geschreven te worden.
+		\item Voor tijdelijke variabele wordt de naam tmp of temp gebruikt. 
+		\item Als dummie text zal Lorem ipsum gebruikt gaan worden door de ontwikkelaars.
+		\newline
+	\end{itemize}
+
+	\item Support
+	\begin{itemize}
+		\item Het ontwikkel team bouwt de website van het Platform met ondersteuning voor de volgende browsers:
+			\begin{itemize}
+			\item Google Chrome 55+
+			\item Mozilla Firefox 50+
+			\item Microsoft Edge 14+
+			\item Safari 10+
+			\item IOS Safari 10+
+			\item Google Chrome mobile 53+
+			\newline
+			\end{itemize}
+	\end{itemize}
+	
+
+	\item Development pipeline
+	\begin{itemize}
+		\item Alle onderdelen van het project zullen worden vastgelegd in een Github repository.
+		\item Indien een ontwikkelaar iets wil testen dan dient hij/zij een nieuwe branch aan te maken op Github en hier alle resultaten in te zetten. Dit dient altijd gedaan te worden ook al heeft de test als resultaat dat het totaal niet mogelijk is het dient altijd ge\"{u}pload te worden zodat het later terug te vinden is.
+		\item Iedereen die wenst iets toe te voegen aan het project dient dit te doen via Github.
+		\item Ieder commit op github dient een duidelijke uitleg te hebben met wat er is toegevoegd en/of verwijderd.
+		\item De ontwikkelaars zullen hun eigen versie draaien op hun eigen computer of laptop en zullen deze up-to-date houden met de andere ontwikkelaars.
+		\item De development pipeline zal gedocumenteerd worden op github.
+		\item Development dependensies dienen altijd gecontroleerd te worden op het eind van de development pipeline.
+		\newline
+	\end{itemize}
+
+	\item Release pipeline
+	\begin{itemize}
+		\item De release pipeline dient gedocumenteerd te worden in de Github repository.
+		\item De regels van de release pipeline dient strict gevold te worden.
+		\item Release code mag alleen als dusdanig uitgegeven worden als alle modules binnen de pipeline groen licht hebben gegeven.
+		\newline
+	\end{itemize}
+
+	\item Major releases
+	\begin{itemize}
+		\item Alle code die in een grote versie / release versie beland zal minimaal door de automatische test heen moeten komen en zal ook minimaal een voldoende moeten scoren op de kwaliteitseis controles.
+		\item Alle major releases dienen op Github specifiek aangegeven te worden.
+		\newline
+	\end{itemize}
+	
+	\item Documentatie
+	\begin{itemize}
+		\item Ieder component in het systeem zal minimaal een uitleg moeten bevatten met daarin genoteerd waar voor het wordt gebruikt en wat zijn verantwoordelijkheden zijn.
+		\item Alle documentatie dient op Github geplaatst te worden als brondbestand en als pdf bestand.
+		\item PDF bestanden op Github dienen nooit direct vertrouwd te worden als de meest recente versie.
+		\item Het technisch document en andere mogelijke documenten dienen aangevult te worden zodra het kan. Voornamelijk indien ze tijdens het begin van het project leeggelaten zijn of gevuld zijn met onduidelijkheden.
+		\item Alle documentatie dient geschreven te worden in een brondbestand dat uit text bestaat. (.md markdown, .tex \LaTeX en .txt bestanden zijn hier voorbeelden van) .docx Word files zijn bijvoorbeeld een voorbeeld van een bestandstype dat niet is opgebouwd uit text. Word bestanden bestaan uit binaire code. Deze hebben daarom niet een goede koppeling met het versie control systeem dat wordt gebruikt genaamd git. dit bestandtype wordt daarom niet gebruikt in de realisatie van dit project.
+		\newline
+	\end{itemize}
+
+	\item Design
+	\begin{itemize}
+		\item Het grid systeem van Twitter bootstrap zal gebruikt worden om de layout van het platform weer te gaan geven.
+		\item De design filosofie van Twitter bootstrap en Google's material design zullen gecombineerd worden om het uiteindelijke platform vorm te gaan geven.
+		\newline
+	\end{itemize}
+
+	\item Art
+	\begin{itemize}
+		\item De art die gebruikt zal gaan worden zal opgeleverd gaan worden door een extern team. Het is daarom niet een onderdeel van de opdracht.
+		\item Indien de art niet voldoet aan de richtlijnen genoteerd in het grafisch ontwerp dan licht de verantwoordelijkheid aan het art team om dit probleem op te lossen. Het ontwikkel team is in dit geval dan vrij om het product door te ontwikkelen zonder grafisch ontwerp.
+		\item Tekst in het design dient volledig correct aangeleverd te worden zoals het uiteindelijk moet worden of dient gevult te zijn met lorem ipsum dummy tekst.
+		\newline
+	\end{itemize}
+
+\end{itemize} 
+
+
+
+\end{document}      
