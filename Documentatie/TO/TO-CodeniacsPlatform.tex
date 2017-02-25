@@ -84,7 +84,7 @@ De programmeer style is voor deze opdracht specifiek afgestemd. De volgende onde
 	\item Rapid prototyping / toekomst bestendigheid
 	\item Beginnen met een boilerplate / of vanaf scratch
 	\item NoSQL / SQL
-	\item Isomorphic code / language specifiek domein talen voor de Database, Server en Client
+	\item True isomorphic code / language specifiek domein talen voor de Database, Server en Client
 \end{itemize}
 
 Uit deze overwegingen is de keuze gemaakt om voornamelijk de linker kan van de bovenstaande tabel aan te houden in verband met de omvang van het project dat in verhouding staat tot de deadline's. 
@@ -96,7 +96,46 @@ Dit heeft wel als nadeel dat er op dit moment geen geranties zijn voor de uitein
 
 \chapter{Gegevensverzameling}
 
-Lorem ipsum
+
+\section{Database}
+Alle gegevens zullen worden opgeslagen in een MongoDB database, Deze database zal op de server gaan draaien. Zodra een client de website download zal hij een kleine versie van de database downloaden en uiteindelijk gaan draaien. Dit systeem wordt een miniMongo genoemd.
+
+De MongoDB database die als het ware uiteindelijk bij de client draait zal voor de client net doen alsof hij de enigste database is. De client kan ook alleen maar strikt met zijn eigen database communiceren. daarna gaat deze zogenoemde miniMongo database de volgende eigenschappen vertonen:
+
+\begin{itemize}
+	\item De client voert een Mongo commando uit op de database maar de database veranderd niet. Voorbeeld commando "get" oftewel haalop.
+	\begin{itemize}
+		\item Minimongo voert het commando uit en doet verder niks.
+		\item Kan hij de data niet vinden dan controleert hij ook ff bij de server of hij de data daar wel zou mogen vergaren.
+		\newline
+	\end{itemize}
+
+	\item De client voert een Mongo commando uit op de database die een aanpassing maakt op de data. Voorbeelden put, update, remove oftewel voeg iets toe, update iets of verwijder iets.
+	\begin{itemize}
+		\item Minimongo voert het commando uit en comminuceerd daarna terug naar de MongoDB database op de server wat veranderd is.
+		\newline
+	\end{itemize}
+
+	\item De Server krijgt van een minimongo een aanpassing door voor zijn MongoDB database. Dit heeft meerder stappen en gebeurt enkel en alleen in volgende volgorde:
+	\begin{enumerate}
+		\item MongoDB kijkt of de het een geldig mongo commando is.
+		\item MongoDB voerd het commando uit op zijn database als het commando geldig is.
+		\item De MonoDb database kijkt daarna of er miniMongos zijn die hebben aangegeven dat zij de meest actuele versie willen hebben. Dit wordt gedaan door een zogenaamde subscriptie oftewel abonnement op de data. 
+		\item Iedereen die een zogenaamt abonnement heeft op de data zal daarna een berichtje van de server ontvangen met daarin uitgelegd wat er is aangepast.
+		\item Nadat een Client een berichtje ontvangt over zijn abonnement geeft hij dit door aan zijn eigen database oftewel zijn miniMongo.
+		\item MiniMongo kijkt of de het een geldig mongo commando is.
+		\item MiniMongo voerd het commando uit op zijn database als het commando geldig is.
+		\item Zodra er iets in de miniMongo aangepast wordt worden de anpassingen van de database doorgegeven aan de viruele DOM.
+		\item De virtuele DOM verwekt de input en veranderd de DOM zonder hem te hoeven herladen.
+		\newline
+	\end{enumerate}
+\end{itemize}
+
+MongoDB is een nosql database die zijn content opslaat in json achtige files. MongoDB wordt daarna door het Meteor framwork uitgebreid met een miniMongo op de client en meerdere connecties tussen de virtuele DOM, de miniMongo en de MongoDB database op de server.
+
+
+\section{Gegevens opslag}
+De client zal niet alleen zijn eigen database hebben maar zal ook voorzien zijn van seccion variabelen. Hierin kan een cleint gegevens opslaan die uit princiepe nooit gedeeld zouden moeten worden of opgeslagen dienen te worden. Denk hierbij aan staat een menu open ja of te nee of moeten de zoek resultaten gefilterd worden op aantal likes of op aantal weergaven.
 
 
 
@@ -107,20 +146,28 @@ Lorem ipsum
 %   http://www.texample.net/tikz/examples/android/              %
 %   http://www.texample.net/tikz/examples/simple-flow-chart/    %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\tikzset{ >={Latex[width=2mm,length=2mm]},
+5\tikzset{ >={Latex[width=2mm,length=2mm]},
 	% Specifications for style of nodes:
 	base/.style = {rectangle, rounded corners, draw=black, minimum width=2.5cm, minimum height=0.75cm, text centered, font=\ttfamily},
 	blue/.style = {base, fill=blue!30},
 	yellow/.style = {base, fill=orange!15},
 	green/.style = {base, fill=green!15},
 }
-\begin{tikzpicture}[ node distance=2.75cm, every node/.style={fill=white, font=\sffamily}, align=center]
+\begin{tikzpicture}[ node distance=1.5cm, every node/.style={fill=white, font=\sffamily}, align=center]
 % Specification of nodes (position, etc.)
 
 \node (user)              	[blue]              						{User};
-\node (faq)              	[blue, left of=user, xshift=-1cm]        	{FAQ};
+\node (content)             [blue, right of=user, xshift=5cm]        	{Content};
+\node (content-artikel)     [blue, below of=content, xshift=2.5cm]        {Content-artikel};
+\node (content-video)       [blue, below of=content-artikel]        	{Content-video};
+\node (content-game)        [blue, below of=content-video]        		{Content-game};
+\node (content-quiz)            [blue, below of=content-game]        	{Content-quiz};
 
-\draw[->]             (user) -- (faq);
+\draw[->]             (user) -- node{Heeft toegang tot}(content);
+\draw[->]             (content) |- (content-artikel);
+\draw[->]             (content) |- (content-video);
+\draw[->]             (content) |- (content-game);
+\draw[->]             (content) |- (content-quiz);
 
 \end{tikzpicture}
 
